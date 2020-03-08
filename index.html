@@ -2,18 +2,28 @@
 <html>
   <head>
     <title>This is the title of the webpage!</title>
+    <style>
+	#url_to_verify, #mail_address
+	{
+	    float: left;
+	}
+	#email_view
+	{
+	    clear: both;
+	}
+	#rss_list
+        {
+	    float: left;
+	}
   </head>
   <body>
-	<div align="center">
-		URL: <input type="text" id="url_to_verify" name="fname"><br><br><br>
-		<div align="left">
-			Email: <input type="text" id="email_address_to_send" name="lname">
-		</div>
-		<div align="right">
-			<textarea id="w3mission" rows="4" cols="50"></textarea>
-		</div>
-		<button type="button">Save!</button>
-		<button type="button">Send!</button>
+	<div id="root" align="center">
+		<div id="url_to_verify">URL: <input type="text" id="url_to_verify" name="fname"></div>
+		<div id="mail_adress">Email: <input type="text" name="lname"></div>
+		<div id="email_view">EMAIL_VIEW</div>
+		<div id="rss_list">RSS</div>
+		<input type="submit" value="Save!"/>
+		<input type="submit" value="Send!"/>
 	</div>
   </body>
 </html>
