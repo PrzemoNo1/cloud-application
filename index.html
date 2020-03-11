@@ -3,40 +3,20 @@
   <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>This is the title of the webpage!</title>
-    <style>
-	#url_to_verify
-	{
-	    float: left;
-		height: 80px;
-		width: 50%;
-		background-color: powderblue;
-	}
-	#mail_adress
-	{
-	    float: left;
-		height: 80px;
-		width: 50%;
-		background-color: blue;
-	}
-	#email_view
-	{
-		width: 50%;
-	    clear: both;
-		float: left;
-		background-color: yellow;
-	}
-	#rss_list
-    {
-		width: 50%;
-	    float: left;
-		background-color: red;
-	}
-	</style>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		function saveMail()
+		{
+			var mail = document.getElementById("user_mail").value;
+			var return_value = "E_MAIL: <input type=\"email\" id=\"user_mail\" value=" + mail + " readonly/>";
+			document.getElementById("mail_adress").innerHTML = return_value;
+		}
+	</script>
   </head>
   <body>
 	<div id="root">
-		<div id="url_to_verify">URL: <input type="text" name="fname"></div>
-		<div id="mail_adress">Email: <input type="text" name="lname"></div>
+		<div id="url_to_verify">URL: <input type="text" name="fname"/></div>
+		<div id="mail_adress" onchange="saveMail()">E_MAIL: <input type="email" id="user_mail" name="user_name_mail_name"/></div>
 		<div id="email_view">EMAIL_VIEW</div>
 		<div id="rss_list">RSS</div><br><br>
 		<div align="center">

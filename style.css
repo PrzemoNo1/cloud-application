@@ -1,0 +1,32 @@
+#url_to_verify
+{
+	float: left;
+	height: 80px;
+	width: 50%;
+	background-color: powderblue;
+}
+#mail_adress
+{
+	float: left;
+	height: 80px;
+	width: 50%;
+	background-color: blue;
+}
+#email_view
+{
+	width: 50%;
+	clear: both;
+	float: left;
+	background-color: yellow;
+}
+#rss_list
+{
+	width: 50%;
+	float: left;
+	background-color: red;
+}
+input[readonly]
+{
+	background-color:gray;
+	border-color: gray;
+}
