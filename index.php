@@ -21,7 +21,7 @@
   </head>
   <body>
 	<div id="root">
-		<form action="database_wrapper.php" method="post">
+		<form action="submit.php" method="post">
 			<div id="url_to_verify">URL: <input type="text" name="fname"/></div>
 			<div id="mail_adress" onchange="saveMail()">E_MAIL: <input type="email" id="user_mail" name="user_name_mail_name"/></div>
 			<div id="email_view">EMAIL_VIEW</div>
