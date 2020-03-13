@@ -1,14 +1,4 @@
 <?php
-    if (isset($_POST['save']))
-    {
-        echo "This is save action";
-    }
-    else if (isset($_POST['send']))
-    {
-        echo "This is send action";
-    }
-
-    
     class Database_wrapper
     {
         private $connection = NULL;
