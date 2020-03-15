@@ -21,17 +21,19 @@
             for ($i = 1; $i < $size - 1; $i++) {
                 $name = $this->pull_name($converted[$i]);
                 $checkbox_status = $this->pull_checkbox($converted[$i], $request);
+                echo "<br/>";
+                echo $name;
+                echo "<br/>";
+                echo $checkbox_status;
                 $return_array += [$name => $checkbox_status];
             }
-
-            print_r($return_array);
             return $return_array;
         }
 
         private function pull_name(string $single_checkbox)
         {
             $tmp_single_checkbox = $single_checkbox;
-            $converted_for_name = explode("\">", $tmp_single_checkbox);
+            $converted_for_name = explode("/>", $tmp_single_checkbox);
             $name = isset($converted_for_name[1]) ? $converted_for_name[1] : NULL;
             return $name;
         }
@@ -39,11 +41,10 @@
         private function pull_checkbox(string $single_checkbox, array $request)
         {
             $tmp_single_checkbox = $single_checkbox;
-            $converted_for_checkbox_name = explode("\" value", $tmp_single_checkbox);
+            $converted_for_checkbox_name = explode("\"/>", $tmp_single_checkbox);
             $checkbox_name = $converted_for_checkbox_name[0];
             $converted_for_checkbox_name_again = explode("name=\"", $checkbox_name);
             $final_checkbox_name = isset($converted_for_checkbox_name_again[1]) ? $converted_for_checkbox_name_again[1] : NULL;
-            print_r($final_checkbox_name);
             return isset($request[$final_checkbox_name]) ? 'true' : 'false';
         }
     }

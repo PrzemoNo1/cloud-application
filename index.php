@@ -3,8 +3,8 @@
 	require_once "startup.php";
 	setUp();
 
-	$_SESSION['rss_list_output'] = "<br/><input type=\"checkbox\" name=\"test1\" value=\"value1\">Pierwszy url<br/>
-	<input type=\"checkbox\" name=\"test2\" value=\"value2\">Drugi url<br/>";
+//	$_SESSION['rss_list_output'] = "<br/><input type=\"checkbox\" name=\"test1\" value=\"value1\">Pierwszy url<br/>
+//	<input type=\"checkbox\" name=\"test2\" value=\"value2\">Drugi url<br/>";
 ?>
 
 <!doctype html>
@@ -25,7 +25,7 @@
   <body>
 	<div id="root">
 		<form action="Components/submit.php" method="post">
-			<div id="url_to_verify">URL: <input type="text" name="url_to_verify"/></div>
+			<div id="url_to_verify"><input type="text" name="url_to_verify"/></div>
 			<div id="mail_adress" onchange="saveMail()">E_MAIL: <input type="email" id="user_mail" name="user_name_mail_name"/></div>
 			<div id="email_view">EMAIL_VIEW</div>
 			<div id="rss_list">RSS

@@ -25,9 +25,13 @@
 
     if (!$are_preconditions_fulfilled)
     {
-        echo "Cos tam wyszlo?";
         exit();
     }
 
     $operation->execute();
+
+    $refresh_operation = unserialize($_SESSION['refresh_operation']);
+    $refresh_operation->execute();
+
+    header("Location: ../index.php");
 ?>
