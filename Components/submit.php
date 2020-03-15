@@ -9,13 +9,13 @@
     {
         $save_preconditions = new Save_preconditions();
         $are_preconditions_fulfilled =  $save_preconditions->check();
-        $action;
+        $operation = NULL;
     }
     else
     {
         $send_preconditions = new Send_preconditions();
         $are_preconditions_fulfilled =  $send_preconditions->check();
-        $action
+        $operation = NULL;
     }
 
     if (!$are_preconditions_fulfilled)
@@ -23,6 +23,4 @@
         echo "Cos tam wyszlo?";
         exit();
     }
-
-    if ()
 ?>
