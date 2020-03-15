@@ -7,7 +7,7 @@
         public function __construct(array $request)
         {
             $_SESSION['mail_address'] = isset($request['mail_address']) ? $request['mail_address'] : NULL;
-            $_SESSION['url'] = isset($request['url']) ? $request['url'] : NULL;
+            $_SESSION['url'] = isset($request['url_to_verify']) ? $request['url_to_verify'] : NULL;
             $_SESSION['action'] = isset($request['save']) ? 'save' : 'send';
             $_SESSION['rss_list'] = isset($_SESSION['rss_list_output']) ? $this->convert_to_array($_SESSION['rss_list_output'], $request) : array();
         }

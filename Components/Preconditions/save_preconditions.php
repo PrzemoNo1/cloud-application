@@ -7,14 +7,13 @@
             {
                 return false;
             }
-
-            if ($this->isRemoveOperation())
+            else if (isset($_SESSION['rss_list']) && $this->isRemoveOperation())
             {
                 return true;
             }
-            else if (isset($_SESSION['rss_list']) && count($_SESSION['rss_list']) != $this->counter)
+            else if (isset($_SESSION['url']))
             {
-                return false;
+                return true;
             }
 
             return true;
@@ -22,9 +21,15 @@
 
         private function isRemoveOperation()
         {
-            return true;
+            $rss_list = $_SESSION['rss_list'];
+            foreach($rss_list as $key => $value)
+            {
+                if($value == 'true')
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-
-        private $counter;
     }
 ?>
