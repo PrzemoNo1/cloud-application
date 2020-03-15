@@ -24,5 +24,7 @@
         {
             return true;
         }
+
+        private $counter;
     }
 ?>
