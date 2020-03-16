@@ -40,12 +40,32 @@
 
         private function pull_checkbox(string $single_checkbox, array $request)
         {
-            $tmp_single_checkbox = $single_checkbox;
+            echo "<br/><br/>PULL CHECKBOX<br/><br/>";
+            $tmp_single_checkbox = $this->change_dot_to_underscore($single_checkbox);
+            echo "<br/>$tmp_single_checkbox<br/>";
             $converted_for_checkbox_name = explode("\"/>", $tmp_single_checkbox);
+            print_r($converted_for_checkbox_name);
+            echo "<br/>";
             $checkbox_name = $converted_for_checkbox_name[0];
+            echo $checkbox_name;
             $converted_for_checkbox_name_again = explode("name=\"", $checkbox_name);
+            echo "<br/>";
+            print_r($converted_for_checkbox_name_again);
             $final_checkbox_name = isset($converted_for_checkbox_name_again[1]) ? $converted_for_checkbox_name_again[1] : NULL;
             return isset($request[$final_checkbox_name]) ? 'true' : 'false';
+        }
+
+        private function change_dot_to_underscore(string $original_request)
+        {
+            $return_request = $original_request;
+            for ($i = 0; $i < strlen($original_request); $i++)
+            {
+                if ($return_request[$i] == ".")
+                {
+                    $return_request[$i] = "_";
+                }
+            }
+            return $return_request;
         }
     }
 ?>
