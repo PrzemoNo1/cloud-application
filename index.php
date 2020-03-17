@@ -27,7 +27,18 @@
 		<form action="Components/submit.php" method="post">
 			<div id="url_to_verify"><input type="text" name="url_to_verify"/></div>
 			<div id="mail_adress" onchange="saveMail()">E_MAIL: <input type="email" id="user_mail" name="user_name_mail_name"/></div>
-			<div id="email_view">EMAIL_VIEW</div>
+			<div id="email_view">
+				<?php
+					if (isset($_SESSION['email_view']))
+					{
+						echo $_SESSION['email_view'];
+					}
+					else
+					{
+						echo "EMAIL_VIEW";
+					}
+				?>
+			</div>
 			<div id="rss_list">RSS
 				<?php
 					if (isset($_SESSION['rss_list_output']))
