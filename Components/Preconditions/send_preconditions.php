@@ -3,7 +3,7 @@
     {
         public function check()
         {
-            if (isset($_SESSION['email_address']))
+            if (!isset($_SESSION['mail_address']))
             {
                 return false;
             }

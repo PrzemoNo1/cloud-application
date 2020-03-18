@@ -47,18 +47,17 @@
 
                 $output .= "<h1>".$site."</h1></br>";
                 foreach ($xml->channel->item as $item) {
-
-                $title = $item->title;
-                $link = $item->link;
-                $description = $item->description;
-                $postDate = $item->pubDate;
-                $pubDate = date('D, d M Y',strtotime($postDate));
-                $output .= "<br/>$title";
-                $output .= "<br/>$link";
-                $output .= "<br/>$description";
-                $output .= "<br/>$postDate";
-                $output .= "<br/>$pubDate";
-                $output .= "<br/><br/><br/>";
+                    $title = $item->title;
+                    $link = $item->link;
+                    $description = $item->description;
+                    $postDate = $item->pubDate;
+                    $pubDate = date('D, d M Y',strtotime($postDate));
+                    $output .= "<br/>$title";
+                    $output .= "<br/>$link";
+                    $output .= "<br/>$description";
+                    $output .= "<br/>$postDate";
+                    $output .= "<br/>$pubDate";
+                    $output .= "<br/><br/><br/>";
                 }
             }
 

@@ -2,9 +2,6 @@
 	session_start();
 	require_once "startup.php";
 	setUp();
-
-//	$_SESSION['rss_list_output'] = "<br/><input type=\"checkbox\" name=\"test1\" value=\"value1\">Pierwszy url<br/>
-//	<input type=\"checkbox\" name=\"test2\" value=\"value2\">Drugi url<br/>";
 ?>
 
 <!doctype html>
@@ -26,7 +23,20 @@
 	<div id="root">
 		<form action="Components/submit.php" method="post">
 			<div id="url_to_verify"><input type="text" name="url_to_verify"/></div>
-			<div id="mail_adress" onchange="saveMail()">E_MAIL: <input type="email" id="user_mail" name="user_name_mail_name"/></div>
+			<div id="mail_adress">
+				<?php
+					if (isset($_SESSION['mail_address']))
+					{
+						$email_address = $_SESSION['mail_address'];
+						$output = "<input type=\"email\" id=\"user_mail\" name=\"mail_address\" value=".$email_address." readonly/>";
+						echo $output;
+					}
+					else
+					{
+						echo "E_MAIL: <input type=\"email\" id=\"user_mail\" name=\"mail_address\"/>";
+					}
+				?>
+			</div>
 			<div id="email_view">
 				<?php
 					if (isset($_SESSION['email_view']))

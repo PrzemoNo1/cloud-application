@@ -25,6 +25,8 @@
 
     if (!$are_preconditions_fulfilled)
     {
+        unset($_SESSION['email_view']);
+        header("Location: ../index.php");
         exit();
     }
 
