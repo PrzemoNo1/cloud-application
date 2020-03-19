@@ -5,10 +5,10 @@
     require_once "Components/Operations/refresh_operation.php";
     @session_start();
 
-    function setUp() {
-        if (isset($_SESSION['started']))
+    function setUp(bool $is_startup) {
+        if ($is_startup)
         {
-            $_SESSION['started'] = true;
+            unset($_SESSION['mail_address']);
             unset($_SESSION['email_view']);
             unset($_SESSION['rss_list_output']);
 

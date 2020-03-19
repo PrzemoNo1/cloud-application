@@ -1,7 +1,15 @@
 ﻿<?php
 	session_start();
 	require_once "startup.php";
-	setUp();
+	if (isset($_GET['is_runtime']))
+	{
+		$setup_value = false;
+	}
+	else
+	{
+		$setup_value = true;
+	}
+	setUp($setup_value);
 ?>
 
 <!doctype html>
@@ -10,14 +18,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>This is the title of the webpage!</title>
 	<link rel="stylesheet" href="style.css">
-	<script>
-		function saveMail()
-		{
-			var mail = document.getElementById("user_mail").value;
-			var return_value = "E_MAIL: <input type=\"email\" id=\"user_mail\" value=" + mail + " readonly/>";
-			document.getElementById("mail_adress").innerHTML = return_value;
-		}
-	</script>
   </head>
   <body>
 	<div id="root">

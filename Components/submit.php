@@ -26,14 +26,12 @@
     if (!$are_preconditions_fulfilled)
     {
         unset($_SESSION['email_view']);
-        header("Location: ../index.php");
+        header("Location: ../index.php?is_runtime=true");
         exit();
     }
 
     $operation->execute();
-
     $refresh_operation = unserialize($_SESSION['refresh_operation']);
     $refresh_operation->execute();
-
-    header("Location: ../index.php");
+    header("Location: ../index.php?is_runtime=true");
 ?>
