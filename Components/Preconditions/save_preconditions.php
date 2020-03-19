@@ -15,7 +15,6 @@
             {
                 return true;
             }
-
             return false;
         }
 
@@ -34,8 +33,7 @@
 
         private function is_url_correct(string $url)
         {
-            $forbidden_letter = " ";
-            return strpos($url, $forbidden_letter) == false;
+            return file_get_contents($url) !== false;
         }
     }
 ?>
