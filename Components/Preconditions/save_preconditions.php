@@ -11,12 +11,12 @@
             {
                 return true;
             }
-            else if (isset($_SESSION['url']))
+            else if (isset($_SESSION['url']) && $this->is_url_correct($_SESSION['url']))
             {
                 return true;
             }
 
-            return true;
+            return false;
         }
 
         private function isRemoveOperation()
@@ -30,6 +30,12 @@
                 }
             }
             return false;
+        }
+
+        private function is_url_correct(string $url)
+        {
+            $forbidden_letter = " ";
+            return strpos($url, $forbidden_letter) == false;
         }
     }
 ?>
