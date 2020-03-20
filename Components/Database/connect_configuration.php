@@ -4,4 +4,5 @@
 	$password=""; // Haslo do bazy
 	$database="cloud_app"; // Nazwa bazy
 	$table="rss"; // Nazwa tabeli
+	$SENDGRID_API_KEY = "";
 ?>
