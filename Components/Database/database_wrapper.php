@@ -5,49 +5,86 @@
         {
             require "connect_configuration.php";
             $connection = new mysqli($host, $user, $password, $database);
-            echo "<br/>Usun <br/>";
+            if (!$connection)
+            {
+                echo "Error: Unable to connect to MySQL.";
+                echo "Debugging errno: ".mysqli_connect_errno();
+                echo "Debugging error: ".mysqli_connect_error();
+                exit;
+            }
             print_r($remove_array);
             foreach($remove_array as $key => $value)
             {
-                $my_sql_query = "DELETE FROM rss WHERE rss.rss = \"$key\" OR rss.rss = \"\"";
+                $my_sql_query = "DELETE FROM $table WHERE rss.rss = \"$key\" OR rss.rss = \"\"";
                 echo "<br/>";
                 echo $my_sql_query;
                 if($result = $connection->query($my_sql_query))
                 {
-                    echo "Works";
+                    $connection->close();
                 }
-                else{
-                    echo "Doesn't work";
+                else
+                {
+                    echo "Remove operation cannot be executed due to incorrect MySql statement<br/>";
+                    echo "$my_sql_query<br/>";
+                    exit;
                 }
             }
-            $connection->close();
         }
 
         public function add(string $new_url)
         {
             require "connect_configuration.php";
             $connection = new mysqli($host, $user, $password, $database);
+            if (!$connection)
+            {
+                echo "Error: Unable to connect to MySQL.";
+                echo "Debugging errno: ".mysqli_connect_errno();
+                echo "Debugging error: ".mysqli_connect_error();
+                exit;
+            }
             echo "</br>Dodaj <br/>";
             echo $new_url;
-            $my_sql_query = "INSERT INTO rss (id, rss) VALUES (\"\", \"$new_url\")";
+            $my_sql_query = "INSERT INTO $table (id, rss) VALUES (\"\", \"$new_url\")";
             echo $my_sql_query;
-            $connection->query($my_sql_query);
-            $connection->close();
+            if ($result = $connection->query($my_sql_query))
+            {
+                $connection->close();
+            }
+            else
+            {
+                echo "Add operation cannot be executed due to incorrect MySql statement<br/>";
+                echo "$my_sql_query<br/>";
+                exit;
+            }
         }
 
         public function select_all()
         {
             require "connect_configuration.php";
             $connection = new mysqli($host, $user, $password, $database);
-            $my_sql_query = "SELECT rss.rss FROM rss";
-            echo $my_sql_query;
-            $result = $connection->query($my_sql_query);
-            $return_array = [];
-            while($obj = $result->fetch_object()){
-                $return_array[] = $obj->rss;
+            if (!$connection)
+            {
+                echo "Error: Unable to connect to MySQL.";
+                echo "Debugging errno: ".mysqli_connect_errno();
+                echo "Debugging error: ".mysqli_connect_error();
+                exit;
             }
-            $connection->close();
-            return $return_array;
+            $my_sql_query = "SELECT rss.rss FROM $table";
+            if ($result = $connection->query($my_sql_query))
+            {
+                $return_array = [];
+                while($obj = $result->fetch_object()){
+                    $return_array[] = $obj->rss;
+                }
+                $connection->close();
+                return $return_array;
+            }
+            else
+            {
+                echo "Select operation cannot be executed due to incorrect MySql statement<br/>";
+                echo "$my_sql_query<br/>";
+                exit;
+            }
         }
     }
 ?>
