@@ -3,11 +3,6 @@
 
     class Save_operation
     {
-        private $_database_wrapper;
-        public function __construct($database_wrapper)
-        {
-            $_database_wrapper = $database_wrapper;
-        }
         public function execute()
         {
             $this->remove_marked_urls();
