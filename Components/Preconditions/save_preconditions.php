@@ -33,7 +33,15 @@
 
         private function is_url_correct(string $url)
         {
-            return file_get_contents($url) !== false;
+            try
+            {
+                file_get_contents($url) !== false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+            return true;
         }
     }
 ?>
