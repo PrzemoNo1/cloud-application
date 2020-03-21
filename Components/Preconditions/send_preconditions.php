@@ -8,7 +8,7 @@
                 return false;
             }
 
-            if (count($_SESSION['rss_list']) == 0)
+            if (!isset($_SESSION['rss_list']) || count($_SESSION['rss_list']) == 0)
             {
                 return false;
             }
